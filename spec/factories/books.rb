@@ -24,33 +24,23 @@
 # end
 
 FactoryBot.define do
-  factory :buku_pelajaran, class: Book do
+  factory :book do
     title { 'Matematika' }
-    author_id { 1 }
     type { 'Buku Pelajaran'}
     year { 2021 }
   end
 
-  factory :comic, class: Book do
+  factory :comic, class: Book, aliases: [:novel] do
     title { 'Naruto' }
-    author_id { 2 }
     type { 'Hiburan' }
     year { 2021 }
   end
 
-  # :book -> Book
-  factory :book, class: Book, aliases: [:buku] do
-    title { 'Matematika' }
-    author_id { 1 }
-    type { 'Buku Pelajaran'}
-    year { 2021 }
-  end
-
   # :koran -> Koran
-  factory :koran, class: Book do
-    title { 'Kompas' }
+  factory :ebook, class: Book do
+    title { 'E-Book' }
     author_id { 1 }
-    type { 'Berita' }
+    type { 'Digital' }
     year { 2021 }
   end
 end

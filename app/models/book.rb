@@ -12,7 +12,7 @@
 #
 class Book < ApplicationRecord
 
-  belongs_to :author
-  has_many :sections
+  # belongs_to :author
+  # has_many :sections
 
 end
