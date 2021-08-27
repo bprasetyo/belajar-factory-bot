@@ -20,27 +20,55 @@
 #   end
 #
 #   factory ....
+#   test do
+#    .......
+#   end
 #
 # end
 
 FactoryBot.define do
   factory :book do
-    title { 'Matematika' }
-    type { 'Buku Pelajaran'}
-    year { 2021 }
-  end
 
-  factory :comic, class: Book, aliases: [:novel] do
-    title { 'Naruto' }
-    type { 'Hiburan' }
-    year { 2021 }
-  end
+    year { 2020 }
+    book_type { "Pelajaran" }
+    # author { create(:author) }
+    sequence(:title) do |n|
+      "#{year} | #{n}"
+    end
 
-  # :koran -> Koran
-  factory :ebook, class: Book do
-    title { 'E-Book' }
-    author_id { 1 }
-    type { 'Digital' }
-    year { 2021 }
+    transient do
+      pengurangan_tahun { 10 }
+    end
+
+    # nama_relasi { create(:nama_factory) }
+    # author { create(:author) }
+    # sequence(:nama_attributes) { |n| "n" }
+
+    #  callback
+    #
+    after(:build) do |book|
+
+    end
+
+    after(:create) do |book|
+
+    end
+
+    trait :koran do
+      book_type { 'Berita' }
+    end
+
+    trait :draft do
+      workflow_state { 'Draft' }
+    end
+
+    trait :receive do
+      workflow_state { 'Receive' }
+    end
+
+    factory :stock_order_franchise do
+
+    end
+
   end
 end
