@@ -51,11 +51,14 @@ RSpec.describe BooksController, type: :controller do
     context 'valid data' do
 
       it 'should create book when fill all require fields' do
+        author = create(:author)
+
         post :create, {
           params: {
             book: {
               title: 'Title',
-              year: 1990
+              year: 1990,
+              author_id: author.id
             }
           }
         }

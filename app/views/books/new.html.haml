@@ -9,5 +9,15 @@
   .row
     = f.text_field :year, placeholder: 'Year'
 
+  .row{style: 'display: none;'}
+    = f.text_field :author_id, value: Author.first.id
+
+  %h3 Sections
+  - @book.sections.each do |section|
+    = f.simple_fields_for :sections, section do |ff|
+      .row
+        = ff.text_field :title
+
+  %br
   .row
     = f.submit 'Save'

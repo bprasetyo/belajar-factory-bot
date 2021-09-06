@@ -6,3 +6,11 @@
 
 .row
   Year: #{@book.year}
+
+.row
+  Author: #{@book.author.name}
+
+%h3 Sections
+- @book.sections.each.with_index(1) do |section, index|
+  = "#{index}. #{section.title}"
+  %br

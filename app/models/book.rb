@@ -12,14 +12,17 @@
 #
 class Book < ApplicationRecord
 
-  # belongs_to :author
+  belongs_to :author
 
-  # has_many :sections, inverse_of: :book, dependent: :destroy
-  # accepts_nested_attributes_for :sections, allow_destroy: true
+  has_many :sections, inverse_of: :book, dependent: :destroy
+  accepts_nested_attributes_for :sections, allow_destroy: true
 
   validates :title, :year, presence: true
 
   def initialize_book
     self.year = Time.now.year
+    self.sections.build
+    self.sections.build
+    self.sections.build
   end
 end
